@@ -1,7 +1,7 @@
-import { Space, Typography } from 'antd';
+import { Typography } from 'antd';
 import styled from 'styled-components';
 
-const { Text, Title } = Typography;
+const { Title } = Typography;
 
 export const ContainerLoginScreen = styled.div`
   width: 100%;
@@ -17,10 +17,6 @@ export const BackgroundImage = styled.img`
   height: 100vh;
   object-fit: cover;
   z-index: -1;
-`;
-
-export const LogoImage = styled.img`
-  width: 202px;
 `;
 
 export const TitleLogin = styled(Title)`
