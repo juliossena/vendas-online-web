@@ -12,6 +12,7 @@ import {
   LimitedContainer,
   TitleLogin,
 } from '../styles/loginScreen.styles';
+import { UserType } from '../types/UserType';
 
 const LoginScreen = () => {
   const { accessToken, setAccessToken } = useGlobalContext();
@@ -27,12 +28,13 @@ const LoginScreen = () => {
     setPassword(event.target.value);
   };
 
-  const handleLogin = () => {
-    setAccessToken('novo token');
-    postRequest('http://localhost:8080/auth', {
+  const handleLogin = async () => {
+    const user = await postRequest<UserType>('http://localhost:8080/auth', {
       email: email,
       password: password,
     });
+
+    setAccessToken(user?.accessToken || '');
   };
 
   return (
