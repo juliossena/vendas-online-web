@@ -1,9 +1,9 @@
-import axios from 'axios';
 import { useState } from 'react';
 
 import Button from '../../../shared/components/buttons/button/Button';
 import SVGLogo from '../../../shared/components/icons/SVGLogo';
 import Input from '../../../shared/components/inputs/input/Input';
+import { useGlobalContext } from '../../../shared/hooks/useGlobalContext';
 import { useRequests } from '../../../shared/hooks/useRequests';
 import {
   BackgroundImage,
@@ -14,6 +14,7 @@ import {
 } from '../styles/loginScreen.styles';
 
 const LoginScreen = () => {
+  const { accessToken, setAccessToken } = useGlobalContext();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { postRequest, loading } = useRequests();
@@ -27,6 +28,7 @@ const LoginScreen = () => {
   };
 
   const handleLogin = () => {
+    setAccessToken('novo token');
     postRequest('http://localhost:8080/auth', {
       email: email,
       password: password,
@@ -39,7 +41,7 @@ const LoginScreen = () => {
         <LimitedContainer>
           <SVGLogo />
           <TitleLogin level={2} type="secondary">
-            LOGIN
+            LOGIN ({accessToken})
           </TitleLogin>
           <Input title="USUÁRIO" margin="32px 0px 0px" onChange={handleEmail} value={email} />
           <Input
