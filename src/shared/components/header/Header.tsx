@@ -1,11 +1,12 @@
-import { ExclamationCircleOutlined } from '@ant-design/icons';
-import { Button, Modal, Space } from 'antd';
+import { Modal } from 'antd';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { logout } from '../../functions/connection/auth';
 import { HeaderContainer, LogoExit } from './header.style';
 
 const Header = () => {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
   const showModal = () => {
@@ -21,7 +22,7 @@ const Header = () => {
       <Modal
         title="Atenção"
         open={open}
-        onOk={logout}
+        onOk={() => logout(navigate)}
         onCancel={hideModal}
         okText="Sim"
         cancelText="Cancelar"
