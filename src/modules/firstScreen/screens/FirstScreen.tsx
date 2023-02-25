@@ -2,11 +2,11 @@ import { Spin } from 'antd';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useGlobalContext } from '../../../shared/hooks/useGlobalContext';
+import { useGlobalReducer } from '../../../store/reducers/globalReducer/useGlobalReducer';
 import { ProductRoutesEnum } from '../../product/routes';
 
 const FirstScreen = () => {
-  const { user } = useGlobalContext();
+  const { user } = useGlobalReducer();
   const navigate = useNavigate();
 
   useEffect(() => {
