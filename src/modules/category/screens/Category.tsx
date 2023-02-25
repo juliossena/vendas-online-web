@@ -36,15 +36,11 @@ const columns: ColumnsType<CategoryType> = [
 ];
 
 const Category = () => {
-  const { categories } = useCategory();
+  const { categories, handleOnChangeSearch } = useCategory();
   const navigate = useNavigate();
 
   const handleOnClickCategory = () => {
     navigate(CategoryRoutesEnum.CATEGORY_INSERT);
-  };
-
-  const handleOnSearch = (value: string) => {
-    console.log(value);
   };
 
   return (
@@ -60,7 +56,7 @@ const Category = () => {
     >
       <DisplayFlexJustifyBetween margin="0px 0px 16px 0px">
         <LimitedContainer width={240}>
-          <Search placeholder="Buscar categoria" onSearch={handleOnSearch} enterButton />
+          <Search placeholder="Buscar categoria" onSearch={handleOnChangeSearch} enterButton />
         </LimitedContainer>
 
         <LimitedContainer width={120}>
