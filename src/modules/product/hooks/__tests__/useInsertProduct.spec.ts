@@ -60,4 +60,40 @@ describe('Test useInsertProduct', () => {
 
     expect(result.current.product.price).toEqual(Number(TEST_MOCK));
   });
+
+  it('should change disabledButton in insert data', () => {
+    const { result } = renderHook(() => useInsertProduct());
+
+    expect(result.current.disabledButton).toEqual(true);
+
+    act(() => {
+      result.current.onChangeInput({ target: { value: '4324' } } as any, 'price', true);
+    });
+
+    expect(result.current.disabledButton).toEqual(true);
+
+    act(() => {
+      result.current.onChangeInput({ target: { value: 'dfafa' } } as any, 'name');
+    });
+
+    expect(result.current.disabledButton).toEqual(true);
+
+    act(() => {
+      result.current.onChangeInput({ target: { value: 'http' } } as any, 'image');
+    });
+
+    expect(result.current.disabledButton).toEqual(true);
+
+    act(() => {
+      result.current.handleChangeSelect('4324');
+    });
+
+    expect(result.current.disabledButton).toEqual(false);
+
+    act(() => {
+      result.current.onChangeInput({ target: { value: '' } } as any, 'image');
+    });
+
+    expect(result.current.disabledButton).toEqual(true);
+  });
 });
