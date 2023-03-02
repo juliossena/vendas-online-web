@@ -5,3 +5,5 @@ export const URL_AUTH = 'http://localhost:8080/auth';
 export const URL_PRODUCT = 'http://localhost:8080/product';
 
 export const URL_CATEGORY = 'http://localhost:8080/category';
+
+export const URL_ORDER_ALL = 'http://localhost:8080/order/all';
