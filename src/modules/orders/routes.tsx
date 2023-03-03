@@ -5,7 +5,7 @@ import OrderDetail from './screens/OrderDetail';
 
 export enum OrderRoutesEnum {
   ORDER = '/order',
-  ORDER_ID = '/order/id',
+  ORDER_ID = '/order/:orderId',
 }
 
 export const orderScreens: RouteObject[] = [
