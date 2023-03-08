@@ -16,6 +16,11 @@ export const useInsertProduct = () => {
     name: '',
     price: 0,
     image: '',
+    weight: 0,
+    length: 0,
+    height: 0,
+    width: 0,
+    diameter: 0,
   });
 
   useEffect(() => {
