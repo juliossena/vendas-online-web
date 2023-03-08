@@ -2,6 +2,7 @@ import { Spin } from 'antd';
 import { Input } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Button from '../../../shared/components/buttons/button/Button';
 import Screen from '../../../shared/components/screen/Screen';
@@ -17,6 +18,7 @@ import { insertMaskInCpf } from '../../../shared/functions/cpf';
 import { insertMaskInPhone } from '../../../shared/functions/phone';
 import { UserType } from '../../login/types/UserType';
 import { useUser } from '../hooks/useUser';
+import { UserRoutesEnum } from '../routes';
 
 const { Search } = Input;
 
@@ -55,8 +57,13 @@ const columns: ColumnsType<UserType> = [
 
 const User = () => {
   const { users, loading, handleOnChangeSearch } = useUser();
+  const navigate = useNavigate();
 
   const userToken = useMemo(() => getUserInfoByToken(), []);
+
+  const handleGoToInsertAdmin = () => {
+    navigate(UserRoutesEnum.USER_INSERT);
+  };
 
   return (
     <Screen
@@ -81,7 +88,7 @@ const User = () => {
             </LimitedContainer>
             <LimitedContainer width={180}>
               {userToken?.typeUser === UserTypeEnum.Root && (
-                <Button type="primary" onClick={() => null}>
+                <Button type="primary" onClick={handleGoToInsertAdmin}>
                   Inserir Admin
                 </Button>
               )}
