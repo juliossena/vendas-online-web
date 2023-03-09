@@ -1,10 +1,14 @@
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { useMemo } from 'react';
 
 import Button from '../../../shared/components/buttons/button/Button';
 import Screen from '../../../shared/components/screen/Screen';
-import { DisplayFlexJustifyBetween } from '../../../shared/components/styles/display.styled';
+import {
+  DisplayFlex,
+  DisplayFlexJustifyBetween,
+} from '../../../shared/components/styles/display.styled';
 import { LimitedContainer } from '../../../shared/components/styles/limited.styled';
 import Table from '../../../shared/components/table/Table';
 import { convertNumberToMoney } from '../../../shared/functions/money';
@@ -54,12 +58,27 @@ const Product = () => {
       {
         title: 'Action',
         dataIndex: '',
+        width: 240,
         key: 'x',
         render: (_, product) => (
-          <>
-            <a onClick={() => handleEditProduct(product.id)}>Editar</a>
-            <a onClick={() => handleDeleteProduct(product.id)}>Deletar</a>
-          </>
+          <LimitedContainer width={180}>
+            <DisplayFlex>
+              <Button
+                margin="0px 16px 0px 0px"
+                onClick={() => handleEditProduct(product.id)}
+                icon={<EditOutlined />}
+              >
+                Editar
+              </Button>
+              <Button
+                danger
+                onClick={() => handleDeleteProduct(product.id)}
+                icon={<DeleteOutlined />}
+              >
+                Deletar
+              </Button>
+            </DisplayFlex>
+          </LimitedContainer>
         ),
       },
     ],

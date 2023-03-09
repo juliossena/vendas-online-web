@@ -4,6 +4,7 @@ import Button from '../../../shared/components/buttons/button/Button';
 import Input from '../../../shared/components/inputs/input/Input';
 import InputMoney from '../../../shared/components/inputs/inputMoney/InputMoney';
 import Select from '../../../shared/components/inputs/select/Select';
+import Loading from '../../../shared/components/loading/Loading';
 import Screen from '../../../shared/components/screen/Screen';
 import {
   DisplayFlex,
@@ -24,6 +25,7 @@ const ProductInsert = () => {
     loading,
     disabledButton,
     isEdit,
+    loadingProduct,
     onChangeInput,
     handleInsertProduct,
     handleChangeSelect,
@@ -46,8 +48,10 @@ const ProductInsert = () => {
         },
       ]}
     >
-      {loading ? (
-        <div>carregando</div>
+      {loadingProduct ? (
+        <DisplayFlexJustifyCenter>
+          <Loading size="large" />
+        </DisplayFlexJustifyCenter>
       ) : (
         <DisplayFlexJustifyCenter data-testid={ProductInsertTestIdEnum.PRODUCT_INSERT_CONTAINER}>
           <LimitedContainer width={400}>
