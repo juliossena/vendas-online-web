@@ -24,6 +24,7 @@ const Category = () => {
     handleOpenModalDelete,
     handleCloseModalDelete,
     handleConfirmDeleteCategory,
+    handleGoToEditCategory,
   } = useCategory();
 
   const columns: ColumnsType<CategoryType> = [
@@ -55,7 +56,7 @@ const Category = () => {
         <LimitedContainer width={180}>
           <DisplayFlex>
             <LimitedContainer margin="0px 16px 0px 0px" width={90}>
-              <Button onClick={() => null} icon={<EditOutlined />}>
+              <Button onClick={() => handleGoToEditCategory(category.id)} icon={<EditOutlined />}>
                 Editar
               </Button>
             </LimitedContainer>

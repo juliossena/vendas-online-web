@@ -60,6 +60,10 @@ export const useCategory = () => {
     setCategoryIdDelete(undefined);
   };
 
+  const handleGoToEditCategory = (categoryId: number) => {
+    navigate(CategoryRoutesEnum.CATEGORY_EDIT.replace(':categoryId', `${categoryId}`));
+  };
+
   return {
     categories: categoriesFiltered,
     openModalDelete: !!categoryIdDelete,
@@ -68,5 +72,6 @@ export const useCategory = () => {
     handleOpenModalDelete,
     handleCloseModalDelete,
     handleConfirmDeleteCategory,
+    handleGoToEditCategory,
   };
 };
