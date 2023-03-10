@@ -1,5 +1,5 @@
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import { Input } from 'antd';
+import { Input, Modal } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { useMemo } from 'react';
 
@@ -22,10 +22,13 @@ const { Search } = Input;
 const Product = () => {
   const {
     productsFiltered,
+    openModalDelete,
     handleOnClickInsert,
     onSearch,
     handleDeleteProduct,
     handleEditProduct,
+    handleCloseModalDelete,
+    handleOpenModalDelete,
   } = useProduct();
 
   const columns: ColumnsType<ProductType> = useMemo(
@@ -72,7 +75,7 @@ const Product = () => {
               </Button>
               <Button
                 danger
-                onClick={() => handleDeleteProduct(product.id)}
+                onClick={() => handleOpenModalDelete(product.id)}
                 icon={<DeleteOutlined />}
               >
                 Deletar
@@ -96,6 +99,16 @@ const Product = () => {
         },
       ]}
     >
+      <Modal
+        title="Atenção"
+        open={openModalDelete}
+        onOk={handleDeleteProduct}
+        onCancel={handleCloseModalDelete}
+        okText="Sim"
+        cancelText="Cancelar"
+      >
+        <p>Tem certeza que deseja excluir esse produto?</p>
+      </Modal>
       <DisplayFlexJustifyBetween margin="0px 0px 16px 0px">
         <LimitedContainer width={240}>
           <Search placeholder="Buscar produto" onSearch={onSearch} enterButton />
