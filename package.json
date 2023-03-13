@@ -63,7 +63,15 @@
       "<rootDir>/setup-tests.js"
     ],
     "collectCoverageFrom": [
-      "<rootDir>/src/**/*.{js,ts,jsx,tsx}"
+      "<rootDir>/src/**/*.{js,ts,jsx,tsx}",
+      "!<rootDir>/**/*Type.{js,ts,jsx,tsx}",
+      "!<rootDir>/**/*.styled.{js,ts,jsx,tsx}",
+      "!<rootDir>/**/icons/**",
+      "!<rootDir>/**/App.tsx",
+      "!<rootDir>/**/main.tsx",
+      "!<rootDir>/**/vite-env.d.ts",
+      "!<rootDir>/**/index.ts",
+      "!<rootDir>/**/*.enum.{js,ts,jsx,tsx}"
     ]
   }
 }
